@@ -1,0 +1,9 @@
+localhost {
+    root * /srv
+    file_server
+    encode gzip
+    tls internal
+    header {
+               Strict-Transport-Security "max-age=31536000;"
+           }
+}

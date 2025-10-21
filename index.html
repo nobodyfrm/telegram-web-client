@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="de">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1"/>
+    <title>Telegram Client (rein clientseitig)</title>
+    <link rel="stylesheet" href="styles.css">
+
+    <!-- tdweb per CDN (jsDelivr). Du kannst hier eine konkrete Version angeben statt @latest. -->
+    <script src="https://cdn.jsdelivr.net/npm/@dibgram/tdweb/dist/tdweb.js" crossorigin="anonymous"></script>
+
+    <script src="app.js" defer></script>
+</head>
+<body>
+<main>
+    <h1>Telegram Client (clientseitig, TDLib/WASM)</h1>
+
+    <section id="setup">
+        <h2>1. Verbindung / Login</h2>
+        <p>Gib deine API_ID und API_HASH (von https://my.telegram.org/apps) ein und dann deine Telefonnummer.</p>
+
+        <label>API_ID
+            <input id="apiId" type="text" inputmode="numeric" placeholder="z. B. 123456" />
+        </label>
+
+        <label>API_HASH
+            <input id="apiHash" type="text" placeholder="z. B. abcdef123456..." />
+        </label>
+
+        <label>Telefonnummer (international, z.B. +49...)
+            <input id="phone" type="text" placeholder="+491234567890" />
+        </label>
+
+        <div class="buttons">
+            <button id="initBtn">TDLib initialisieren</button>
+            <button id="sendPhoneBtn" disabled>Telefonnummer senden</button>
+        </div>
+
+        <div id="loginCodeArea" style="display:none;">
+            <label>Code (aus Telegram)
+                <input id="code" type="text" placeholder="12345" />
+            </label>
+            <button id="sendCodeBtn">Code senden</button>
+        </div>
+
+        <div id="status" class="status">Status: nicht verbunden</div>
+    </section>
+
+    <section id="chatsSection" style="display:none;">
+        <h2>2. Chats</h2>
+        <button id="refreshChatsBtn">Chats aktualisieren</button>
+        <ul id="chatsList"></ul>
+    </section>
+
+    <footer>
+        <small>Dieses Projekt läuft komplett clientseitig. Siehe README.md für Hinweise.</small>
+    </footer>
+</main>
+</body>
+</html>
