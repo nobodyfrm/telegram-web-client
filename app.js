@@ -409,7 +409,8 @@
     sendCodeBtn.addEventListener('click', sendCode);
 
     // Haupt-Initialisierer (knüpft UI→TDLib init)
-    initBtn.addEventListener('click', async () => {
+    initBtn.addEventListener('click', async (e) => {
+      e.preventDefault();
       // Lese UI-Werte
       const apiIdRaw = apiIdInput.value.trim();
       const apiHash = apiHashInput.value.trim();
